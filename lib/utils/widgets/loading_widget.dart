@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prolog_test/utils/constants.dart';
 
 class LoadingWidget extends StatelessWidget {
   const LoadingWidget({
@@ -8,7 +9,9 @@ class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: CircularProgressIndicator(),
+      child: CircularProgressIndicator(
+        color: PrologConstants.softMarine,
+      ),
     );
   }
 }

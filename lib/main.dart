@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:prolog_test/data/client/dio.dart';
 import 'package:prolog_test/data/repository/tire_repository_interface.dart';
 import 'package:prolog_test/data/repository/tire_repository.dart';
+import 'package:prolog_test/utils/constants.dart';
 
 import 'tire_list_page/view/tire_list_page.dart';
 
@@ -23,10 +24,10 @@ class PrologTest extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          appBarTheme: const AppBarTheme(
-            color: Color(0xFF253166),
-          ),
-          colorScheme: const ColorScheme.light()),
+        colorScheme: ColorScheme.fromSwatch()
+            .copyWith(secondary: PrologConstants.softMarine),
+        appBarTheme: const AppBarTheme(color: PrologConstants.softMarine),
+      ),
       home: const TireListPage(),
     );
   }
