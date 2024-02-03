@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prolog_test/utils/constants.dart';
 
 class TryAgainWidget extends StatelessWidget {
   final VoidCallback onPressed;
@@ -23,7 +24,16 @@ class TryAgainWidget extends StatelessWidget {
             const SizedBox(height: 12),
             OutlinedButton(
               onPressed: onPressed,
-              child: const Text('Tentar novamente'),
+              style: OutlinedButton.styleFrom(
+                  backgroundColor: PrologConstants.normalBlue),
+              child: Text(
+                'Tentar novamente'.toUpperCase(),
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 0.8),
+              ),
             ),
           ],
         ),

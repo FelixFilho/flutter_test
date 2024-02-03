@@ -10,4 +10,6 @@ class PrologConstants {
   static const companyId = 3;
   static const softMarine = Color(0xFF253166);
   static const darkGrey = Color(0xFF70767D);
+  static const normalBlue = Color(0xFF5579FF);
+  static const secondaryGreen = Color(0xFF00CF90);
 }

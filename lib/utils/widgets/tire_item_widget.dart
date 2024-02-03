@@ -37,7 +37,7 @@ class TireItemWidget extends StatelessWidget {
         trailing: tire.newTire
             ? const Text(
                 'Novo',
-                style: TextStyle(color: Colors.green),
+                style: TextStyle(color: PrologConstants.secondaryGreen),
               )
             : const Text(
                 'Usado',
