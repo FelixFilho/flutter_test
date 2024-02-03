@@ -26,10 +26,13 @@ class TireItemWidget extends StatelessWidget {
               PrologConstants.tireImage,
               alignment: Alignment.center,
             )),
-        title: Text('Serial: ${tire.serialNumber}'),
+        title: Text(
+          'Serial: ${tire.serialNumber}',
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
         subtitle: Text(
           'Empresa: ${tire.companyGroupName} - ${tire.branchOfficeName}',
-          style: const TextStyle(color: Colors.grey),
+          style: const TextStyle(color: PrologConstants.darkGrey),
         ),
         trailing: tire.newTire
             ? const Text(

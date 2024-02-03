@@ -68,9 +68,9 @@ class _TireListViewState extends State<TireListView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: state.tires!
-                  .map((e) => TireItemWidget(
-                        tire: e,
-                        onPressed: () => _onTirePressed(e.id),
+                  .map((tire) => TireItemWidget(
+                        tire: tire,
+                        onPressed: () => _onTirePressed(tire.id),
                       ))
                   .toList(),
             ),

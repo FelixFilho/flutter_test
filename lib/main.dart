@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:prolog_test/data/client/dio.dart';
 import 'package:prolog_test/data/repository/tire_repository_interface.dart';
 import 'package:prolog_test/data/repository/tire_repository.dart';
@@ -24,6 +25,7 @@ class PrologTest extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        textTheme: GoogleFonts.montserratTextTheme(),
         colorScheme: ColorScheme.fromSwatch()
             .copyWith(secondary: PrologConstants.softMarine),
         appBarTheme: const AppBarTheme(color: PrologConstants.softMarine),
