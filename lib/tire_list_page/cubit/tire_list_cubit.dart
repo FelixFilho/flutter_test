@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:prolog_test/data/repository/interface/tire_repository_interface.dart';
+import 'package:prolog_test/data/repository/tire_repository_interface.dart';
 import 'package:prolog_test/tire_list_page/cubit/tire_list_state.dart';
 
 class TireListCubit extends Cubit<TireListState> {

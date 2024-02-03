@@ -1,4 +1,4 @@
-import 'package:prolog_test/data/repository/models/tire_model.dart';
+import 'package:prolog_test/data/models/tire_model.dart';
 
 abstract class ITireRepository {
   Future<List<TireModel>?> getTires();

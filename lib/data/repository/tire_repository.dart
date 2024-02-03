@@ -1,31 +1,25 @@
 import 'dart:developer';
-
-import 'package:dio/dio.dart';
-import 'package:prolog_test/data/repository/interface/tire_repository_interface.dart';
-import 'package:prolog_test/data/repository/models/tire_model.dart';
+import 'package:prolog_test/data/client/dio.dart';
+import 'package:prolog_test/data/repository/tire_repository_interface.dart';
+import 'package:prolog_test/data/models/tire_model.dart';
 import 'package:prolog_test/utils/constants.dart';
 
 class TireRepository implements ITireRepository {
-  final getTiresPath = '/api/v3/tires';
-  getTireByIdPath(int id) => '/api/v3/tires/$id';
+  final DioClient dioClient;
+
+  TireRepository(this.dioClient);
 
   @override
   Future<List<TireModel>?> getTires() async {
     try {
-      final response = await Dio(BaseOptions(
-          baseUrl: PrologConstants.baseUrl,
-          contentType: 'application/json',
-          queryParameters: {
-            'branchOfficesId': 215,
-            'pageSize': 100,
-            'pageNumber': 1
-          },
-          headers: {
-            'x-prolog-api-token':
-                'ePTC2XrkY34WKUCXq48fTxrLCzdV3M35MNpCfBYavabwwY9BJXg',
-            'companyId': 3,
-            'branchOffsetId': 215,
-          })).get(getTiresPath);
+      final response = await dioClient.dio!.get(
+        PrologConstants.getTiresPath,
+        queryParameters: {
+          'branchOfficesId': PrologConstants.branchOffsetId,
+          'pageSize': 100,
+          'pageNumber': 1
+        },
+      );
 
       final contentMap = response.data['content'];
       final tireList = (contentMap as List)
@@ -43,20 +37,9 @@ class TireRepository implements ITireRepository {
   @override
   Future<TireModel?> getTireById({required int id}) async {
     try {
-      final response = await Dio(BaseOptions(
-          baseUrl: PrologConstants.baseUrl,
-          contentType: 'application/json',
-          queryParameters: {
-            'branchOfficesId': 215,
-            'pageSize': 100,
-            'pageNumber': 1
-          },
-          headers: {
-            'x-prolog-api-token':
-                'ePTC2XrkY34WKUCXq48fTxrLCzdV3M35MNpCfBYavabwwY9BJXg',
-            'companyId': 3,
-            'branchOffsetId': 215,
-          })).get(getTireByIdPath(id));
+      final response = await dioClient.dio!.get(
+        PrologConstants.getTireByIdPath + id.toString(),
+      );
 
       final tire = TireModel.fromMap(response.data);
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prolog_test/data/repository/models/tire_model.dart';
+import 'package:prolog_test/data/models/tire_model.dart';
 import 'package:prolog_test/utils/constants.dart';
 
 class TireItemWidget extends StatelessWidget {

@@ -1,13 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:prolog_test/data/repository/models/analysis_model.dart';
-import 'package:prolog_test/data/repository/models/current_retread_model.dart';
-import 'package:prolog_test/data/repository/models/disposal_model.dart';
-import 'package:prolog_test/data/repository/models/installed_model.dart';
-import 'package:prolog_test/data/repository/models/make_model.dart';
-import 'package:prolog_test/data/repository/models/model_model.dart';
-import 'package:prolog_test/data/repository/models/tire_size_model.dart';
+import 'package:prolog_test/data/models/analysis_model.dart';
+import 'package:prolog_test/data/models/current_retread_model.dart';
+import 'package:prolog_test/data/models/disposal_model.dart';
+import 'package:prolog_test/data/models/installed_model.dart';
+import 'package:prolog_test/data/models/make_model.dart';
+import 'package:prolog_test/data/models/model_model.dart';
+import 'package:prolog_test/data/models/tire_size_model.dart';
 import 'package:prolog_test/utils/enums/tire_status_type.dart';
 import 'package:prolog_test/utils/extensions/tire_status_extensions.dart';
 

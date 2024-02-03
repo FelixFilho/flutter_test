@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:prolog_test/data/repository/models/tire_model.dart';
+import 'package:prolog_test/data/models/tire_model.dart';
 
 class TireDetailsState extends Equatable {
   final TireModel? tire;
