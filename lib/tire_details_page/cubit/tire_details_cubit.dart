@@ -9,7 +9,7 @@ class TireDetailsCubit extends Cubit<TireDetailsState> {
       : _repository = repository,
         super(TireDetailsState.initial());
 
-  Future<void> getTireById(int id) async {
+  Future<void> getTireById(num id) async {
     emit(state.copyWith(isLoading: true));
 
     final result = await _repository.getTireById(id: id);

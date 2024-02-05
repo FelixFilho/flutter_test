@@ -10,7 +10,7 @@ import 'package:prolog_test/utils/widgets/loading_widget.dart';
 import 'package:prolog_test/utils/widgets/try_again_widget.dart';
 
 class TireDetailsPage extends StatelessWidget {
-  final int id;
+  final num id;
   const TireDetailsPage({super.key, required this.id});
 
   @override
@@ -22,7 +22,7 @@ class TireDetailsPage extends StatelessWidget {
 }
 
 class TireDetailsView extends StatefulWidget {
-  final int id;
+  final num id;
 
   const TireDetailsView({super.key, required this.id});
 
@@ -64,6 +64,14 @@ class _TireDetailsViewState extends State<TireDetailsView> {
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
+                  if (tire.disposal != null &&
+                      tire.disposal!.disposalImagesUrl.isNotEmpty)
+                    ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.network(
+                          tire.disposal!.disposalImagesUrl.first,
+                          width: MediaQuery.of(context).size.width * 0.5,
+                        )),
                   InfoFieldsWidget(
                     title: 'Número de série',
                     content: tire.serialNumber,

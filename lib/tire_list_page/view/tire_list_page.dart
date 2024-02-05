@@ -32,7 +32,7 @@ class TireListView extends StatefulWidget {
 class _TireListViewState extends State<TireListView> {
   late TireListCubit _bloc;
 
-  void _onTirePressed(int id) {
+  void _onTirePressed(num id) {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (_) => TireDetailsPage(
               id: id,

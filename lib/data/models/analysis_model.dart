@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 class AnalysisModel {
-  final int recapperId;
+  final num recapperId;
   final String recapperName;
   final String recapperPickUpId;
 
@@ -13,7 +13,7 @@ class AnalysisModel {
   );
 
   AnalysisModel copyWith({
-    int? recapperId,
+    num? recapperId,
     String? recapperName,
     String? recapperPickUpId,
   }) {
@@ -24,23 +24,13 @@ class AnalysisModel {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'recapperId': recapperId,
-      'recapperName': recapperName,
-      'recapperPickUpId': recapperPickUpId,
-    };
-  }
-
   factory AnalysisModel.fromMap(Map<String, dynamic> map) {
     return AnalysisModel(
-      map['recapperId'] as int,
+      map['recapperId'] as num,
       map['recapperName'] as String,
       map['recapperPickUpId'] as String,
     );
   }
-
-  String toJson() => json.encode(toMap());
 
   factory AnalysisModel.fromJson(String source) =>
       AnalysisModel.fromMap(json.decode(source) as Map<String, dynamic>);

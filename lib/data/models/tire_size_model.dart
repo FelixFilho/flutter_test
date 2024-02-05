@@ -2,10 +2,10 @@
 import 'dart:convert';
 
 class TireSize {
-  final int id;
-  final double height;
-  final double width;
-  final double rim;
+  final num id;
+  final num height;
+  final num width;
+  final num rim;
 
   TireSize(
     this.id,
@@ -15,10 +15,10 @@ class TireSize {
   );
 
   TireSize copyWith({
-    int? id,
-    double? height,
-    double? width,
-    double? rim,
+    num? id,
+    num? height,
+    num? width,
+    num? rim,
   }) {
     return TireSize(
       id ?? this.id,
@@ -28,25 +28,14 @@ class TireSize {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'height': height,
-      'width': width,
-      'rim': rim,
-    };
-  }
-
   factory TireSize.fromMap(Map<String, dynamic> map) {
     return TireSize(
-      map['id'] as int,
-      map['height'] as double,
-      map['width'] as double,
-      map['rim'] as double,
+      map['id'] as num,
+      map['height'] as num,
+      map['width'] as num,
+      map['rim'] as num,
     );
   }
-
-  String toJson() => json.encode(toMap());
 
   factory TireSize.fromJson(String source) =>
       TireSize.fromMap(json.decode(source) as Map<String, dynamic>);

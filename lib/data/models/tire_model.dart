@@ -12,21 +12,21 @@ import 'package:prolog_test/utils/enums/tire_status_type.dart';
 import 'package:prolog_test/utils/extensions/tire_status_extensions.dart';
 
 class TireModel {
-  final int id;
+  final num id;
   final String serialNumber;
   final String? additionalId;
-  final int companyGroupId;
+  final num companyGroupId;
   final String companyGroupName;
-  final int? branchOffsetId;
+  final num? branchOffsetId;
   final String branchOfficeName;
-  final int timesRetreaded;
-  final int maxRetreadsExpected;
-  final double? recommendedPressure;
-  final double? currentPressure;
-  final double? middleInnerTreadDepth;
-  final double? outerTreadDepth;
-  final double? middleOuterTreadDepth;
-  final double? innerTreadDepth;
+  final num timesRetreaded;
+  final num maxRetreadsExpected;
+  final num? recommendedPressure;
+  final num? currentPressure;
+  final num? middleInnerTreadDepth;
+  final num? outerTreadDepth;
+  final num? middleOuterTreadDepth;
+  final num? innerTreadDepth;
   final String dot;
   final num purchaseCost;
   final bool newTire;
@@ -71,21 +71,21 @@ class TireModel {
   );
 
   TireModel copyWith({
-    int? id,
+    num? id,
     String? serialNumber,
     String? additionalId,
-    int? companyGroupId,
+    num? companyGroupId,
     String? companyGroupName,
-    int? branchOffsetId,
+    num? branchOffsetId,
     String? branchOfficeName,
-    int? timesRetreaded,
-    int? maxRetreadsExpected,
-    double? recommendedPressure,
-    double? currentPressure,
-    double? middleInnerTreadDepth,
-    double? outerTreadDepth,
-    double? middleOuterTreadDepth,
-    double? innerTreadDepth,
+    num? timesRetreaded,
+    num? maxRetreadsExpected,
+    num? recommendedPressure,
+    num? currentPressure,
+    num? middleInnerTreadDepth,
+    num? outerTreadDepth,
+    num? middleOuterTreadDepth,
+    num? innerTreadDepth,
     String? dot,
     num? purchaseCost,
     bool? newTire,
@@ -130,61 +130,29 @@ class TireModel {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'serialNumber': serialNumber,
-      'additionalId': additionalId,
-      'companyGroupId': companyGroupId,
-      'companyGroupName': companyGroupName,
-      'branchOffsetId': branchOffsetId,
-      'branchOfficeName': branchOfficeName,
-      'timesRetreaded': timesRetreaded,
-      'maxRetreadsExpected': maxRetreadsExpected,
-      'recommendedPressure': recommendedPressure,
-      'currentPressure': currentPressure,
-      'middleInnerTreadDepth': middleInnerTreadDepth,
-      'outerTreadDepth': outerTreadDepth,
-      'middleOuterTreadDepth': middleOuterTreadDepth,
-      'innerTreadDepth': innerTreadDepth,
-      'dot': dot,
-      'purchaseCost': purchaseCost,
-      'newTire': newTire,
-      'status': status,
-      'createdAt': createdAt,
-      'tireSize': tireSize.toMap(),
-      'make': make.toMap(),
-      'model': model.toMap(),
-      'currentRetread': currentRetread?.toMap(),
-      'installed': installed?.toMap(),
-      'disposal': disposal?.toMap(),
-      'analysis': analysis?.toMap(),
-    };
-  }
-
   factory TireModel.fromMap(Map<String, dynamic> map) {
     return TireModel(
-      map['id'] as int,
+      map['id'] as num,
       map['serialNumber'] as String,
       map['additionalId'] != null ? map['additionalId'] as String : null,
-      map['companyGroupId'] as int,
+      map['companyGroupId'] as num,
       map['companyGroupName'] as String,
-      map['branchOffsetId'] != null ? map['branchOffsetId'] as int : null,
+      map['branchOffsetId'] != null ? map['branchOffsetId'] as num : null,
       map['branchOfficeName'] as String,
-      map['timesRetreaded'] as int,
-      map['maxRetreadsExpected'] as int,
+      map['timesRetreaded'] as num,
+      map['maxRetreadsExpected'] as num,
       map['recommendedPressure'] != null
-          ? map['recommendedPressure'] as double
+          ? map['recommendedPressure'] as num
           : null,
-      map['currentPressure'] != null ? map['currentPressure'] as double : null,
+      map['currentPressure'] != null ? map['currentPressure'] as num : null,
       map['middleInnerTreadDepth'] != null
-          ? map['middleInnerTreadDepth'] as double
+          ? map['middleInnerTreadDepth'] as num
           : null,
-      map['outerTreadDepth'] != null ? map['outerTreadDepth'] as double : null,
+      map['outerTreadDepth'] != null ? map['outerTreadDepth'] as num : null,
       map['middleOuterTreadDepth'] != null
-          ? map['middleOuterTreadDepth'] as double
+          ? map['middleOuterTreadDepth'] as num
           : null,
-      map['innerTreadDepth'] != null ? map['innerTreadDepth'] as double : null,
+      map['innerTreadDepth'] != null ? map['innerTreadDepth'] as num : null,
       map['dot'] as String,
       map['purchaseCost'] as num,
       map['newTire'] as bool,
@@ -208,8 +176,6 @@ class TireModel {
           : null,
     );
   }
-
-  String toJson() => json.encode(toMap());
 
   factory TireModel.fromJson(String source) =>
       TireModel.fromMap(json.decode(source) as Map<String, dynamic>);

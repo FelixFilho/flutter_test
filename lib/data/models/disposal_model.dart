@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 class DisposalModel {
-  final int disposalReasonId;
+  final num disposalReasonId;
   final List disposalImagesUrl;
 
   DisposalModel(
@@ -13,7 +13,7 @@ class DisposalModel {
   );
 
   DisposalModel copyWith({
-    int? disposalReasonId,
+    num? disposalReasonId,
     List? disposalImagesUrl,
   }) {
     return DisposalModel(
@@ -22,22 +22,13 @@ class DisposalModel {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'disposalReasonId': disposalReasonId,
-      'disposalImagesUrl': disposalImagesUrl,
-    };
-  }
-
   factory DisposalModel.fromMap(Map<String, dynamic> map) {
     return DisposalModel(
-        map['disposalReasonId'] as int,
+        map['disposalReasonId'] as num,
         List.from(
           (map['disposalImagesUrl'] as List),
         ));
   }
-
-  String toJson() => json.encode(toMap());
 
   factory DisposalModel.fromJson(String source) =>
       DisposalModel.fromMap(json.decode(source) as Map<String, dynamic>);

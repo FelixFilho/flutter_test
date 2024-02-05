@@ -2,11 +2,11 @@
 import 'dart:convert';
 
 class ModelModel {
-  final int id;
+  final num id;
   final String name;
   final String? additionalId;
-  final int groovesQuantity;
-  final double treadDepth;
+  final num groovesQuantity;
+  final num treadDepth;
 
   ModelModel(
     this.id,
@@ -17,11 +17,11 @@ class ModelModel {
   );
 
   ModelModel copyWith({
-    int? id,
+    num? id,
     String? name,
     String? additionalId,
-    int? groovesQuantity,
-    double? treadDepth,
+    num? groovesQuantity,
+    num? treadDepth,
   }) {
     return ModelModel(
       id ?? this.id,
@@ -32,27 +32,15 @@ class ModelModel {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'additionalId': additionalId,
-      'groovesQuantity': groovesQuantity,
-      'treadDepth': treadDepth,
-    };
-  }
-
   factory ModelModel.fromMap(Map<String, dynamic> map) {
     return ModelModel(
-      map['id'] as int,
+      map['id'] as num,
       map['name'] as String,
       map['additionalId'] != null ? map['additionalId'] as String : null,
-      map['groovesQuantity'] as int,
-      map['treadDepth'] as double,
+      map['groovesQuantity'] as num,
+      map['treadDepth'] as num,
     );
   }
-
-  String toJson() => json.encode(toMap());
 
   factory ModelModel.fromJson(String source) =>
       ModelModel.fromMap(json.decode(source) as Map<String, dynamic>);

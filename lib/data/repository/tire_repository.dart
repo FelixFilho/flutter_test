@@ -35,7 +35,7 @@ class TireRepository implements ITireRepository {
   }
 
   @override
-  Future<TireModel?> getTireById({required int id}) async {
+  Future<TireModel?> getTireById({required num id}) async {
     try {
       final response = await dioClient.dio!.get(
         PrologConstants.getTireByIdPath + id.toString(),

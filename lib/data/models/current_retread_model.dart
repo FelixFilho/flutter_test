@@ -7,7 +7,7 @@ import 'package:prolog_test/data/models/model_model.dart';
 class CurrentRetreadModel {
   final MakeModel make;
   final ModelModel model;
-  final int retreadCost;
+  final num retreadCost;
 
   CurrentRetreadModel(
     this.make,
@@ -18,7 +18,7 @@ class CurrentRetreadModel {
   CurrentRetreadModel copyWith({
     MakeModel? make,
     ModelModel? model,
-    int? retreadCost,
+    num? retreadCost,
   }) {
     return CurrentRetreadModel(
       make ?? this.make,
@@ -27,23 +27,13 @@ class CurrentRetreadModel {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'make': make.toMap(),
-      'model': model.toMap(),
-      'retreadCost': retreadCost,
-    };
-  }
-
   factory CurrentRetreadModel.fromMap(Map<String, dynamic> map) {
     return CurrentRetreadModel(
       MakeModel.fromMap(map['make'] as Map<String, dynamic>),
       ModelModel.fromMap(map['model'] as Map<String, dynamic>),
-      map['retreadCost'] as int,
+      map['retreadCost'] as num,
     );
   }
-
-  String toJson() => json.encode(toMap());
 
   factory CurrentRetreadModel.fromJson(String source) =>
       CurrentRetreadModel.fromMap(json.decode(source) as Map<String, dynamic>);

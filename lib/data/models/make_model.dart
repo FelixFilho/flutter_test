@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 class MakeModel {
-  final int id;
+  final num id;
   final String name;
 
   MakeModel(
@@ -11,7 +11,7 @@ class MakeModel {
   );
 
   MakeModel copyWith({
-    int? id,
+    num? id,
     String? name,
   }) {
     return MakeModel(
@@ -20,21 +20,12 @@ class MakeModel {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-    };
-  }
-
   factory MakeModel.fromMap(Map<String, dynamic> map) {
     return MakeModel(
-      map['id'] as int,
+      map['id'] as num,
       map['name'] as String,
     );
   }
-
-  String toJson() => json.encode(toMap());
 
   factory MakeModel.fromJson(String source) =>
       MakeModel.fromMap(json.decode(source) as Map<String, dynamic>);

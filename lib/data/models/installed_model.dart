@@ -2,10 +2,10 @@
 import 'dart:convert';
 
 class InstalledModel {
-  final int vehicleId;
+  final num vehicleId;
   final String licensePlate;
   final String? fleetId;
-  final int installedPosition;
+  final num installedPosition;
 
   InstalledModel(
     this.vehicleId,
@@ -15,10 +15,10 @@ class InstalledModel {
   );
 
   InstalledModel copyWith({
-    int? vehicleId,
+    num? vehicleId,
     String? licensePlate,
     String? fleetId,
-    int? installedPosition,
+    num? installedPosition,
   }) {
     return InstalledModel(
       vehicleId ?? this.vehicleId,
@@ -28,25 +28,14 @@ class InstalledModel {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'vehicleId': vehicleId,
-      'licensePlate': licensePlate,
-      'fleetId': fleetId,
-      'installedPosition': installedPosition,
-    };
-  }
-
   factory InstalledModel.fromMap(Map<String, dynamic> map) {
     return InstalledModel(
-      map['vehicleId'] as int,
+      map['vehicleId'] as num,
       map['licensePlate'] as String,
       map['fleetId'] != null ? map['fleetId'] as String : null,
-      map['installedPosition'] as int,
+      map['installedPosition'] as num,
     );
   }
-
-  String toJson() => json.encode(toMap());
 
   factory InstalledModel.fromJson(String source) =>
       InstalledModel.fromMap(json.decode(source) as Map<String, dynamic>);
