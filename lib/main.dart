@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prolog_test/data/client/dio.dart';
-import 'package:prolog_test/data/repository/tire_repository_interface.dart';
+import 'package:prolog_test/data/repository/interface/tire_repository_interface.dart';
 import 'package:prolog_test/data/repository/tire_repository.dart';
 import 'package:prolog_test/utils/constants.dart';
 
 import 'tire_list_page/view/tire_list_page.dart';
 
-GetIt example = GetIt.instance;
+GetIt getIt = GetIt.instance;
 void main() {
-  example.registerLazySingleton<ITireRepository>(
+  getIt.registerLazySingleton<ITireRepository>(
       () => TireRepository(DioClient()));
   WidgetsFlutterBinding.ensureInitialized();
 

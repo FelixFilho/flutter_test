@@ -31,6 +31,7 @@ class TireListView extends StatefulWidget {
 
 class _TireListViewState extends State<TireListView> {
   late TireListCubit _bloc;
+  late ScrollController _scrollController;
 
   void _onTirePressed(num id) {
     Navigator.of(context).push(MaterialPageRoute(
@@ -41,11 +42,20 @@ class _TireListViewState extends State<TireListView> {
 
   void _onTryAgainPressed() => _bloc.getTires();
 
+  void _handleScrollController() {
+    if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent) {
+      _bloc.getMoreTires();
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     _bloc = context.read<TireListCubit>();
     _bloc.getTires();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_handleScrollController);
   }
 
   @override
@@ -59,20 +69,28 @@ class _TireListViewState extends State<TireListView> {
         if (state.isLoading) {
           return const LoadingWidget();
         }
-        if (!state.isLoading && state.tires == null) {
+        if (!state.isLoading && state.tireList.isEmpty) {
           return TryAgainWidget(onPressed: _onTryAgainPressed);
         }
         return SingleChildScrollView(
+          controller: _scrollController,
           child: Padding(
             padding: const EdgeInsets.all(12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: state.tires!
-                  .map((tire) => TireItemWidget(
-                        tire: tire,
-                        onPressed: () => _onTirePressed(tire.id),
-                      ))
-                  .toList(),
+              children: [
+                ...state.tireList
+                    .map((tire) => TireItemWidget(
+                          tire: tire,
+                          onPressed: () => _onTirePressed(tire.id),
+                        ))
+                    .toList(),
+                if (state.isLoadingMore)
+                  const Padding(
+                    padding: EdgeInsets.all(16),
+                    child: LoadingWidget(),
+                  ),
+              ],
             ),
           ),
         );

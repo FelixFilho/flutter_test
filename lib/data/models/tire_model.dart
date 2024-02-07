@@ -27,7 +27,7 @@ class TireModel {
   final num? outerTreadDepth;
   final num? middleOuterTreadDepth;
   final num? innerTreadDepth;
-  final String dot;
+  final String? dot;
   final num purchaseCost;
   final bool newTire;
   final TireStatusType status;
@@ -153,7 +153,7 @@ class TireModel {
           ? map['middleOuterTreadDepth'] as num
           : null,
       map['innerTreadDepth'] != null ? map['innerTreadDepth'] as num : null,
-      map['dot'] as String,
+      map['dot'] != null ? map['dot'] as String : null,
       map['purchaseCost'] as num,
       map['newTire'] as bool,
       (map['status'] as String).toTireStatusType(),

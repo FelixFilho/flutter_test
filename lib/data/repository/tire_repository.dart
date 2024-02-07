@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'package:prolog_test/data/client/dio.dart';
-import 'package:prolog_test/data/repository/tire_repository_interface.dart';
+import 'package:prolog_test/data/repository/interface/tire_repository_interface.dart';
+import 'package:prolog_test/data/repository/models/pagination_model.dart';
 import 'package:prolog_test/data/models/tire_model.dart';
 import 'package:prolog_test/utils/constants.dart';
 
@@ -10,27 +12,33 @@ class TireRepository implements ITireRepository {
   TireRepository(this.dioClient);
 
   @override
-  Future<List<TireModel>?> getTires() async {
+  Future<TireListWithPagination> getTires({
+    required int pageSize,
+    required int pageNumber,
+  }) async {
     try {
       final response = await dioClient.dio!.get(
         PrologConstants.getTiresPath,
         queryParameters: {
           'branchOfficesId': PrologConstants.branchOffsetId,
-          'pageSize': 100,
-          'pageNumber': 1
+          'pageSize': pageSize,
+          'pageNumber': pageNumber,
         },
       );
 
-      final contentMap = response.data['content'];
-      final tireList = (contentMap as List)
-          .map((tireMap) => TireModel.fromMap(tireMap))
-          .toList();
-      log(response.data.toString());
+      if (response.statusCode == 200) {
+        final tireListWithPagination =
+            TireListWithPagination.fromJson(jsonEncode(response.data));
+        log(response.data.toString());
 
-      return tireList;
+        return tireListWithPagination;
+      } else {
+        log(response.toString());
+        return TireListWithPagination.empty();
+      }
     } catch (e) {
       log(e.toString());
-      return null;
+      return TireListWithPagination.empty();
     }
   }
 
@@ -41,11 +49,16 @@ class TireRepository implements ITireRepository {
         PrologConstants.getTireByIdPath + id.toString(),
       );
 
-      final tire = TireModel.fromMap(response.data);
+      if (response.statusCode == 200) {
+        final tire = TireModel.fromMap(response.data);
 
-      log(response.data.toString());
+        log(response.data.toString());
 
-      return tire;
+        return tire;
+      } else {
+        log(response.toString());
+        return null;
+      }
     } catch (e) {
       log(e.toString());
       return null;
